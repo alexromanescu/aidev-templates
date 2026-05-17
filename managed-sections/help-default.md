@@ -1,7 +1,7 @@
 ---
 section: help
 stack: default
-version: 2
+version: 3
 target: CLAUDE.md
 ---
 ## Help System Sync
@@ -16,7 +16,7 @@ Before declaring a feature complete:
 - **Empty list or collection?** Update empty-state content.
 - **New user workflow?** Consider a tour chapter or step.
 - **New UI elements / events your tour system needs?** Wire the hooks/events your system requires.
-- **Page/route renamed or removed?** Update references everywhere.
+- **Page/route renamed or removed?** Update the route references everywhere they appear (tours, deep-links, breadcrumbs, copy).
 - **Field semantics changed?** Update info text, placeholders, learn-more.
 
 ### Reference

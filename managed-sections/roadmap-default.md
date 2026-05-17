@@ -1,7 +1,7 @@
 ---
 section: roadmap
 stack: default
-version: 6
+version: 7
 target: CLAUDE.md
 ---
 ## Roadmap
@@ -10,7 +10,7 @@ target: CLAUDE.md
 
 ### Deferred work
 
-Record every deferred item in the roadmap. If a deferred item is needed for the current feature to be complete and high-quality, it belongs in this phase's items, not in the Distant Roadmap. If a deferred item follows naturally from the current work, close the session with the prompt to resume it.
+Record every deferred item in the roadmap. If a deferred item is needed for the current feature to be complete and high-quality, it belongs in this phase's items, not in the Distant Roadmap. If a deferred item follows naturally from the current work, end the session with a resume prompt for the next agent to pick up the work.
 
 ### Completed work
 

@@ -1,7 +1,7 @@
 ---
 section: tests
 stack: default
-version: 4
+version: 5
 target: docs/tests.md
 ---
 ## Test tiers
@@ -48,7 +48,7 @@ When a new testing pattern appears repeatedly (property-based, snapshot-replay, 
 3. Reference at least one canonical example test file in this codebase.
 4. Reference the new doc from the Test tiers table above.
 
-If the pattern should be an agent default, propose the addition to the upstream `testing-default` managed-section template — local edits to the upstream-managed Testing section in CLAUDE.md drift on sync.
+If the pattern should be an agent default, propose the addition to the `testing-default` managed-section template in the `aido-templates` repository — local edits to the upstream-managed Testing section in CLAUDE.md drift on sync.
 
 Canonical pattern docs (when scaffolded into this project):
 

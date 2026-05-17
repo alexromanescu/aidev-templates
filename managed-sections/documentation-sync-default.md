@@ -1,7 +1,7 @@
 ---
 section: documentation-sync
 stack: default
-version: 6
+version: 7
 target: CLAUDE.md
 ---
 ## Documentation Sync
@@ -24,8 +24,8 @@ aido-managed projects maintain a conventional set of docs under `docs/`. Update 
 | `docs/deploy.md` | Claude-executable deploy procedure read by the in-app Deploy button | Deploy steps change, new pre/post-deploy checks |
 | `docs/roadmap.md` | What's built, what's planned, active phases | Any feature completed, started, or reorganized |
 
-Missing files are skipped. Projects may add their own docs (e.g. `security.md`, `meta/reflections.md`, `product/prd.md`) in the freeform CLAUDE.md area.
+Missing files are skipped. Projects may add their own docs (e.g. `security.md`, `meta/reflections.md`, `product/prd.md`) in the non-managed area of CLAUDE.md (outside any `<!-- managed:* -->` block).
 
 ### Subdirectories
 
-When a topic has ≥3 deep-dive docs, group them under `docs/<topic>/`; the entry-point doc stays at top level (`docs/tests.md` stays; `docs/testing/structural-tests.md` lives below).
+When a topic has multiple standalone deep-dive docs (topic-specific docs separate from the topic's entry-point doc), group them under `docs/<topic>/`; the entry-point stays at top level (`docs/tests.md` stays; `docs/testing/structural-tests.md` lives below).

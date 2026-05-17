@@ -1,7 +1,7 @@
 ---
 section: testing
 stack: node
-version: 5
+version: 7
 target: CLAUDE.md
 ---
 ## Testing & Verification
@@ -14,7 +14,7 @@ Ensure guarantees, not coverage metrics. Every risk area must be reachable by au
 
 ### Design for testability
 
-This is upstream of writing tests. The code must be shaped so an automated test can drive the user workflow end-to-end without human intervention. Before any feature ships, check:
+This is upstream of writing tests. The code must be shaped so an automated test can drive the user workflow end-to-end with no human in the loop. Before any feature ships, check:
 
 - Inputs are constructable in-process (no manual clicks, no human-only state).
 - Outputs are observable from code (return value, persisted row, emitted event, rendered DOM).
@@ -60,7 +60,7 @@ Verification: run the automated workflow test on the real user surface (Playwrig
 
 ### Subagent verification gate
 
-Subagent-driven development: automated verification runs **after** all subagent tasks pass and **before** any merge claim. Subagents can't run persistent dev servers — the controller does. Give implementation subagents specific automated-test scenarios, not "verify it works".
+Subagent-driven development: automated verification runs **after** all subagent tasks pass and **before** any merge claim. Subagents can't run persistent dev servers — the parent (dispatching) agent does. Give implementation subagents specific automated-test scenarios, not "verify it works".
 
 ### Reference
 
