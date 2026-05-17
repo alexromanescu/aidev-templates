@@ -1,25 +1,17 @@
 ---
 section: roadmap
 stack: default
-version: 5
+version: 6
 target: CLAUDE.md
 ---
 ## Roadmap
 
-The project roadmap lives at `docs/roadmap.md` using the standardized aido table format. The format reference lives at the top of `docs/roadmap.md` itself — follow it when editing the file by hand.
-
-### Rule
-
-**Update task statuses in `docs/roadmap.md` whenever work completes, starts, or is reorganized.** Don't let the roadmap drift from reality — an out-of-date roadmap is worse than no roadmap because it misleads.
-
-### Editing
-
-Use the aido app (`/project/:name/roadmap`) for rich editing, phase management, and task status changes — or edit `docs/roadmap.md` directly and aido will pick up the changes from disk on its next read.
+**Update `docs/roadmap.md` whenever work completes, starts, or is reorganized.** An out-of-date roadmap is worse than none — it misleads. The format reference lives at the top of `docs/roadmap.md`; follow it when editing by hand.
 
 ### Deferred work
 
-All items that are deferred must be recorded in the roadmap; if one follows naturally, each session must close with the prompt to start the next one. If defered items are important for a complete and good quality feature, they must be added into that phase's roadmap items, not on a distant roadmap.
+Record every deferred item in the roadmap. If a deferred item is needed for the current feature to be complete and high-quality, it belongs in this phase's items, not in the Distant Roadmap. If a deferred item follows naturally from the current work, close the session with the prompt to resume it.
 
 ### Completed work
 
-Projects can maintain a separate `docs/roadmap-completed.md` with deliverable-level detail of shipped work, keeping `docs/roadmap.md` focused on active and planned items. When a feature is completed, move its full details to `roadmap-completed.md` and leave a one-line summary in `roadmap.md`'s `## Completed Work` table.
+When a feature ships, move its full details to `docs/roadmap-completed.md` (if the project keeps one) and leave a one-line summary in `docs/roadmap.md`'s `## Completed Work` table.

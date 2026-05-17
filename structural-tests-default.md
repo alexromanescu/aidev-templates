@@ -11,7 +11,7 @@ aido (`structural-tests` managed section). The project-specific
 "Canonical examples" section below it lists this codebase's own
 structural tests for reference.
 
-<!-- managed:structural-tests v=1 -->
+<!-- managed:structural-tests v=2 -->
 Structural tests scan source code itself (regex or AST) and assert on
 shape. They enforce architectural invariants that behavioral tests
 can't: "every X must also Y" rules where adding a new X without the Y
@@ -75,31 +75,15 @@ Every structural test has four pieces:
 
 Each closeout claim ("we've added the structural test for X") is a
 proxy for the invariant. Proxies decay. Run a fresh-eyes review
-periodically.
+periodically: list the proxies the target relies on, grep for shapes
+that match the invariant but evade the regex (alias imports, wildcard
+imports, alternative APIs, mirror-form variants), re-read each
+allow-list reason against the file's current behavior, write failing
+tests for real findings or cite grep for deferred blindspots.
 
-If your environment has the `residuals-review` skill installed (lives
-at `~/.claude/skills/residuals-review/SKILL.md`), it implements the
-adversarial-review cycle that keeps structural tests honest — audit
-prior closeout claims, find shape-mirror bugs, fix them in-cycle or
-defer them with grep citations. Two consecutive zero-finding reviews
-terminate the cycle.
-
-Without that skill, the same discipline can be run by hand:
-
-1. Pick a target (commit, branch, module, working tree).
-2. List the proxies the target relies on — regex patterns, allow-list
-   classifications, "every caller does X" convergence claims.
-3. For each proxy, grep for shapes that match the invariant but evade
-   the regex (alias imports, wildcard imports, alternative APIs,
-   mirror-form variants like params↔return-types or asterisk
-   placement).
-4. Re-read each allow-list reason against the file's current behavior.
-   Stale reasons are decay.
-5. For real findings: write a failing test on dev HEAD, fix it,
-   confirm green. For structural blindspots with no current sites:
-   cite the grep that confirms zero sites and defer.
-6. Report findings. Loop until two consecutive zero-finding reviews
-   terminate the cycle.
+If your environment has the `residuals-review` skill installed (at
+`~/.claude/skills/residuals-review/SKILL.md`), it implements this
+cycle and auto-terminates when two consecutive reviews find nothing.
 
 ## Common pitfalls
 

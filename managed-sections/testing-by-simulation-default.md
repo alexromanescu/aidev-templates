@@ -1,7 +1,7 @@
 ---
 section: testing-by-simulation
 stack: default
-version: 1
+version: 2
 target: docs/testing/testing-by-simulation.md
 ---
 A pattern for testing state-transition bugs, race conditions, and
@@ -29,21 +29,7 @@ Reach for **e2e** only for:
 - Cross-browser smoke tests
 - One "seam test" per major user journey
 
-Aim for ~90% simulation, ~10% e2e on state-shaped surfaces. (This is
-eligibility guidance for state-shaped code, not a project-wide KPI.
-Pure request → response code with no ordering concern stays on
-unit/integration.)
-
-## Why simulations beat e2e for race conditions
-
-End-to-end tests can't deterministically control async event order.
-Real timers, real networks, real WebSocket handshakes — different in
-headless, different in CI, different on the user's machine. A bug that
-manifests when "the server responds too slowly" passes locally, passes
-in CI, fails for the user.
-
-Simulations **construct the exact interleaving** that triggers the
-bug and assert on the result.
+Aim for ~90% simulation, ~10% e2e on state-shaped surfaces.
 
 ## Pattern
 
