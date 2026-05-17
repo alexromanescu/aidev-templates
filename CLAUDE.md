@@ -2,8 +2,6 @@
 
 This repo contains the template content distributed by the aido app: managed sections, project scaffolds, prompts, room-protocol templates, and stack-detection rules. The deployed aido app at `~/Apps/aido/` reads from this folder at runtime and edits it via its `/templates` page UI.
 
-> Note: the GitHub remote is still named `aidev-templates` — preserved for compatibility with other aido/aidev instances and the existing template-editor flow.
-
 You are most likely here because you opened this folder with Claude Code to author or revise a template. The rules below describe what each kind of file does and how to write or modify one without breaking downstream consumers.
 
 ## Layout
