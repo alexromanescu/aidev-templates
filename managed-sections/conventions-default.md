@@ -1,7 +1,7 @@
 ---
 section: conventions
 stack: default
-version: 11
+version: 13
 target: CLAUDE.md
 ---
 ## Conventions
@@ -13,8 +13,6 @@ target: CLAUDE.md
 - **Verify what's verifiable.** Check the repo, git, or tool output before asking the user. Reserve questions for preferences and decisions.
 - **Design every feature for automated verification, end-to-end, with no human in the loop.** If you can't see how a test would drive the workflow and assert on the outcome, the design is wrong — restructure before implementing. Every feature, no matter how small, ships with an automated test.
 - **Match existing patterns first.** Read the surrounding code before writing new code.
-- **No dead code.** Delete commented-out blocks, unused imports, orphan helpers.
 - **YAGNI.** Build only what was requested; do not assume extra features that complicate the architecture.
 - **Fail loudly in development, gracefully in production.** Never silently swallow errors you don't understand.
 - **Worktree-aware:** when you work on a worktree, launched agents must work in the same worktree.
-- **Validate at boundaries.** Check user input, external API responses, and untrusted data at the edges. Trust internal code.
