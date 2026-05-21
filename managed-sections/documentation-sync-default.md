@@ -1,7 +1,7 @@
 ---
 section: documentation-sync
 stack: default
-version: 7
+version: 8
 target: CLAUDE.md
 order: 30
 ---
@@ -22,7 +22,7 @@ aido-managed projects maintain a conventional set of docs under `docs/`. Update 
 | `docs/seeding.md` | Seed script, data scenarios, reset procedure | New entities, tables, or relationships |
 | `docs/help.md` | Help system content and architecture | Help content or help infrastructure changes |
 | `docs/devops.md` | Dev setup, topology, infrastructure, ops commands (human reference) | Setup changes, new ops commands, infra changes |
-| `docs/deploy.md` | Claude-executable deploy procedure read by the in-app Deploy button | Deploy steps change, new pre/post-deploy checks |
+| `docs/deploy.md` | Claude-executable deploy procedure read by the an agent that can deploy the app on a pre-agreed pre-production area | Deploy steps change, new pre/post-deploy checks |
 | `docs/roadmap.md` | What's built, what's planned, active phases | Any feature completed, started, or reorganized |
 
 Missing files are skipped. Projects may add their own docs (e.g. `security.md`, `meta/reflections.md`, `product/prd.md`) in the non-managed area of CLAUDE.md (outside any `<!-- managed:* -->` block).
