@@ -1,13 +1,13 @@
 ---
 section: roadmap
 stack: default
-version: 7
+version: 8
 target: CLAUDE.md
 order: 40
 ---
 ## Roadmap
 
-**Update `docs/roadmap.md` whenever work completes, starts, or is reorganized.** An out-of-date roadmap is worse than none — it misleads. The format reference lives at the top of `docs/roadmap.md`; follow it when editing by hand.
+**Update `docs/roadmap.md` whenever work completes, starts, or is reorganized.** The format reference lives at the top of `docs/roadmap.md`; follow it when editing by hand.
 
 ### Deferred work
 
