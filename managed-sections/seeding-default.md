@@ -3,7 +3,7 @@ section: seeding
 stack: default
 version: 1
 target: CLAUDE.md
-order: 60
+order: 70
 ---
 ## Seeding
 
