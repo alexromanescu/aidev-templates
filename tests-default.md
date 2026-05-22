@@ -16,7 +16,7 @@ agents and contributors can find each topic without searching.
 The Test inventory section below the managed block is fully
 project-specific.
 
-<!-- managed:tests v=5 -->
+<!-- managed:tests v=6 -->
 ## Test tiers
 
 | Tier | Runner | When to run | Duration |
@@ -24,6 +24,7 @@ project-specific.
 | Unit | <runner> | During development, every change | Seconds |
 | Integration | <runner> | When changing DB / storage / external code | Seconds–minutes |
 | Simulation | <runner> | When changing concurrency / state machines / merge logic | Sub-second per test typical |
+| Render / component | <runner> | Every change (fast tier) | Seconds |
 | E2E | <runner> | At milestones, before release | Minutes |
 | Structural | <runner> | Every test run (cheap; runs as part of unit) | Sub-second |
 | CI gates | <CI> | Every PR + push | ~N min |
@@ -67,6 +68,7 @@ Canonical pattern docs (when scaffolded into this project):
 
 - `docs/testing/testing-by-simulation.md` — when to choose simulation over E2E.
 - `docs/testing/structural-tests.md` — when to add a regex/AST-over-source test.
+- `docs/testing/frontend-tests.md` — when and how to render-test UI components.
 <!-- /managed:tests -->
 
 ## Test inventory
