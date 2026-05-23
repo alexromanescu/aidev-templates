@@ -1,7 +1,7 @@
 ---
 section: testing
 stack: default
-version: 10
+version: 11
 target: CLAUDE.md
 order: 70
 ---
@@ -27,10 +27,13 @@ If any answer is "no," redesign before implementing. Common fixes: inject ports 
 
 ### For fixing a bug
 
-1. Write a test that reproduces the user-visible symptom — not the code path of the patch.
+Bugs tracked in `docs/roadmap.md` → `## Bugs` use the `BUG-NNN: <title>` convention (the aido UI prefills the next free `NNN`).
+
+1. Write a test at `tests/bugs/bug-NNN-<slug>.test.ts` that reproduces the user-visible symptom — not the code path of the patch. The test file's header docstring is the bug's permanent record (symptom / root cause / fix).
 2. Run it — confirm it fails.
 3. Fix the bug.
 4. Run it — confirm it passes.
+5. Delete the row from `## Bugs` in the same commit that lands the fix.
 
 Assert on observable behavior at the natural level of abstraction, not on the patch's internal shape. A test that spies on a specific function call (`expect(internalHelper).toHaveBeenCalled()`) breaks when the fix is refactored. Pin to what the caller sees: rejected promise, emitted event, persisted row, rendered string.
 

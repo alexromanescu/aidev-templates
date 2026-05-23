@@ -39,13 +39,24 @@ Sections inside a phase use a level-3 heading and contain one task table:
 - `Status` (required) — one of `done`, `doing`, `next`, `blocked`, `planned` (lowercase).
 - `Description` (required) — one-line summary; newlines are stripped on write.
 - `Dependencies` (optional) — comma-separated task names this task depends on. The column may be omitted entirely from a table that has no dependencies.
+- `Done` (optional) — ISO date `YYYY-MM-DD` recording when the task reached `done`. The aido UI auto-stamps this on the `*→done` transition; agents can backdate inline. The column is omitted from tables where no row has a date.
 
 **Special top-level sections** (outside any phase, level-2 headings, exact names):
 
+- `## Quick Updates` — small ad-hoc improvements that don't belong in a phase. Same task-table shape. Lives **above** the first phase.
+- `## Bugs` — open bugs. Same task-table shape. Task column convention: `BUG-NNN: <title>`. The regression test at `tests/bugs/bug-NNN-*.test.ts` is the bug's permanent record (header documents symptom / root cause / fix); the row is removed from this section in the same commit that lands the fix. Lives **above** the first phase.
 - `## Distant Roadmap` — same task-table shape as a phase section; holds long-horizon items not yet scheduled into a phase.
 - `## Completed Work` — a two-column summary table with headers `Phase / Feature | Summary`, one row per shipped feature (not per task).
 
 The `roadmap-meta` block above is optional; use it for free-form `key: value` lines (e.g. `updated:`). Values must stay on a single line.
+
+## Quick Updates
+| Task | Area | Size | Status | Description |
+|------|------|------|--------|-------------|
+
+## Bugs
+| Task | Area | Size | Status | Description |
+|------|------|------|--------|-------------|
 
 ## Distant Roadmap
 | Task | Area | Size | Status | Description |
