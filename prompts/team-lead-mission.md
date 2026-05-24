@@ -51,6 +51,33 @@ Coordinate a team of Claude Code agents to complete the tasks listed below in pa
 
 {{rules}}
 
+## ⚠ Never let a teammate restart aido directly
+
+Your session AND every teammate you spawn run inside aido's process tree
+(aido → claude(team-lead) → Agent calls). If a teammate runs
+`systemctl --user restart aido` directly, systemd kills aido → kills you →
+kills the teammate mid-step. Suicide.
+
+If a brief or handoff doc you dispatch includes restarting aido (e.g. a deploy
+or a Tofu `apply` that flips an env var), the teammate MUST use the deferred
+pattern — schedule the restart via a transient systemd timer, then exit
+cleanly so aido is fully done with the teammate before the restart fires:
+
+```bash
+systemd-run --user \
+  --on-active=3s \
+  --unit "aido-restart-<brief-slug>-$(date +%s)" \
+  --description "[handoff] restart aido after <reason>" \
+  systemctl --user restart aido
+# then exit — the restart fires 3s later, owned by systemd, not by us
+```
+
+When briefing a teammate whose mission contains `systemctl restart aido`,
+quote this rule verbatim in the teammate's prompt and require it use the
+deferred pattern. Reject any handoff doc whose Step N says
+`systemctl --user restart aido` without the `systemd-run --on-active=...`
+wrapper — push back to the human before dispatching.
+
 ## Briefs (one per task)
 
 The briefs are provided as JSON. Parse it and process each brief:
