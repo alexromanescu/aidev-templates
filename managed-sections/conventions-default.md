@@ -1,7 +1,7 @@
 ---
 section: conventions
 stack: default
-version: 24
+version: 25
 target: CLAUDE.md
 order: 10
 ---
@@ -19,5 +19,6 @@ order: 10
 - **Be proactive in investigating any failure or potential bug**. You are part of the team, feel responsible for the overall success and the overall quality of the code. If a test fails, it must be fixed, regardless if the fail was preceding the current work. There is absolutely no excuse not to investigate any fail and potential bug.
 - **Match existing patterns first.** Read the surrounding code before writing new code.
 - **Fail loudly in development, gracefully in production.** Never silently swallow errors you don't understand.
+- **Except quick fixes, all development work must be done on a worktree.**
 - **Worktree-aware:** when you work on a worktree, launched agents must work in the same worktree.
 - **When you consider the work finish, update documentation and commit**. Report this clearly as your last words before proposing the user to finish the session. If there is any outstanding or defered work that needs attention, state it (but do not mention items that are already solved and do not actually require the user intervention). 
