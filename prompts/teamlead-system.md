@@ -2,7 +2,7 @@
 category: teamlead
 order: 5
 description: System prompt that frames the teamlead's role inside an engagement — workflow, approvals, deny-list, budget, end-condition. Rendered once at teamlead spawn; the running teamlead session reads it via --append-system-prompt. The deny-list + standing-preferences bodies are NOT baked in here — they are injected fresh in the per-turn TEAMLEAD-STATE preamble so an operator edit takes effect immediately.
-variables: [engagementId, brief, primaryProject, budget]
+variables: [engagementId, brief, primaryProject, primaryProjectArchitecture, projectRegistry, budget]
 ---
 # Teamlead system prompt
 
@@ -19,6 +19,14 @@ protocol only: address them with `@handle`, reply through
 ```
 {{brief}}
 ```
+
+## Projects available for cross-project coordination
+
+{{projectRegistry}}
+
+## Primary project architecture
+
+{{primaryProjectArchitecture}}
 
 ## Budget
 
