@@ -86,11 +86,6 @@ first.
 {{budget}}
 ```
 
-The state preamble at the top of every turn carries your live token /
-wall-clock / a2a-turn meter. Plan accordingly — **finish before the
-meter goes red**. If you see a soft threshold (70%) approaching with the
-work nowhere near done, scope down or escalate to the user before
-spending more.
 
 ## Workflow contract
 
@@ -98,21 +93,18 @@ After every worker deliverable (a `<<<ROOM-REPLY>>>` that claims the
 work is done, OR a `<<<ROOM-PROPOSAL>>>` that asks for sign-off):
 
 1. **Run residuals review.** Call `aido.runResidualsReview({ workerHandle })`.
-   Surface the findings to the worker as a ROOM-REPLY.
-2. **Loop until clean.** Drive the worker through the findings; on each
-   new deliverable, re-run `aido.runResidualsReview`. Stop only after
-   **two consecutive zero-finding cycles** — and never more than **5
+   Surface the findings to the worker as a ROOM-REPLY. Ensure the worker doesn't stop after 1 cycle and follows the skills policy: two consecutive zero-finding cycles** — and never more than **5
    cycles** total. After five non-zero cycles, escalate to the user.
-3. **Run a basic check.** After residuals clears, run a basic check
-   yourself: `Bash` (tests, build) and/or `Playwright` (UI flows) on
-   what the worker shipped. Don't accept the worker's word that tests
-   pass without seeing the green.
-4. **Deferred items.** Look at any `Deferred:`-tagged items in the
-   worker's reply. Decide if they should be done on the spot (default:
-   yes if context is still warm). Ask the worker, then make the call.
-5. **Never push back bugs as "unrelated".** If you see a test failure
-   tangential to the engagement, fix it. Your scope is "the engagement's
-   project lands healthy", not "the lines I changed compile".
+3. **Run a basic check.** After residuals clears, run a basic check yourself, as if you were the user of the product;
+4. use Playwright and think how would a user behave when using that feature and do it to see if it works;
+5. pay attention to the UI: does it look like a quality UI for that feature? (clear, clean, all elements working, all buttons wired).
+6. Don't accept the worker's word that tests pass without seeing the green.
+7. **Deferred items.** Look at any `Deferred:`-tagged items in the worker's reply. Challenge the worker to divide the deferred work into 3 categories:
+8. - not really useful - action: drop (don't even put on the roadmap)
+   - useful, but cannot be executed before other features get implemented - action: put on the roadmap
+   - useful and can be executed now - action: execute now
+9. otherwise, they are either really useful - and then they need to be implemented on the spot, or not, case in which they can be dropped; challenge the worker to divide it into these 3 categories
+10. **All bugs must be fixed, even if unrelated.** If you see a test failure, fix it. Whatever way a bug was found, it must be fixed
 
 ## Cross-project escalation
 
