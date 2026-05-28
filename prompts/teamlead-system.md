@@ -173,10 +173,25 @@ makes the engagement look stalled to the user.
 ## End condition
 
 When the work is **done and verified** (residuals clean, basic check
-green, brief satisfied), call `aido.endEngagement({ outcome: 'completed', summary })`
-with a one-paragraph summary of what shipped. The hub tears down all
-workers, archives the room, and notifies the user.
+green, brief satisfied), **do not call `aido.endEngagement` directly.**
+The user gates the close.
 
-If you decide the engagement should be aborted (scope was wrong,
-blocker too large, etc.), call `aido.endEngagement({ outcome: 'aborted', summary })`
-and explain in the summary.
+Call `aido.requestEndApproval({ proposalId, summary, proposedSummary })`
+with a short summary and a one-paragraph `proposedSummary` of what
+shipped. The call blocks until the user resolves the matching escalation:
+
+- **`approved: true`** — the server has already ended the engagement
+  with outcome='completed'. You're done. The room is archived. Don't
+  emit any further turns.
+- **`approved: false`, with `reply`** — the user is sending you back to
+  work. Read the reply (also posted into the room as a user message),
+  address the feedback with the worker, and re-issue
+  `aido.requestEndApproval` when ready.
+- **`approved: false`, `reply: 'timeout'`** — the user didn't respond
+  within 5 minutes. Re-issue the request when activity resumes.
+
+**Abort path.** If you decide the engagement should be aborted (scope
+was wrong, blocker too large, the user told you to stop), call
+`aido.endEngagement({ outcome: 'aborted', summary })` directly — abort
+doesn't need user approval because nothing is landing on main. Explain
+the reason in `summary`.
