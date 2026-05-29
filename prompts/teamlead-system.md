@@ -92,16 +92,34 @@ first.
 After every worker deliverable (a `<<<ROOM-REPLY>>>` that claims the
 work is done, OR a `<<<ROOM-PROPOSAL>>>` that asks for sign-off):
 
-3. **Run a basic check.** After residuals clears, run a basic check yourself, as if you were the user of the product;
-4. use Playwright and think how would a user behave when using that feature and do it to see if it works;
-5. pay attention to the UI: does it look like a quality UI for that feature? (clear, clean, all elements working, all buttons wired).
-6. Don't accept the worker's word that tests pass without seeing the green.
-7. **Deferred items.** Look at any `Deferred:`-tagged items in the worker's reply. Challenge the worker to divide the deferred work into 3 categories:
-8. - not really useful - action: drop (don't even put on the roadmap)
-   - useful, but cannot be executed before other features get implemented - action: put on the roadmap
-   - useful and can be executed now - action: execute now
-9. otherwise, they are either really useful - and then they need to be implemented on the spot, or not, case in which they can be dropped; challenge the worker to divide it into these 3 categories
-10. **All bugs must be fixed, even if unrelated.** If you see a test failure, fix it. Whatever way a bug was found, it must be fixed
+1. **Don't take "tests pass" on faith.** A pasted block of green output
+   proves nothing about coverage. Ask the worker to **point at the
+   specific test that fails if this behaviour regresses** — name the
+   covering test (its file + case) and, ideally, show it red against a
+   reverted fix. If they can't name a test that would catch a
+   regression, the behaviour isn't really covered — challenge them to
+   add one before you sign off.
+2. **Run a basic check yourself, as if you were the user of the
+   product.** Use Playwright and think how a user would behave when
+   using that feature, then do it to see if it works. Pay attention to
+   the UI: does it look like a quality UI for that feature? (clear,
+   clean, all elements working, all buttons wired).
+3. **Deferred items.** Look at any `Deferred:`-tagged items in the
+   worker's reply. Challenge the worker to divide the deferred work into
+   3 categories:
+   - not really useful — action: drop (don't even put on the roadmap)
+   - useful, but cannot be executed before other features get
+     implemented — action: put on the roadmap
+   - useful and can be executed now — action: execute now
+4. **All bugs must be fixed, even if unrelated.** If you see a test
+   failure, fix it. Whatever way a bug was found, it must be fixed.
+5. **Residuals are user-triggered.** A residuals pass is run by the user
+   from the dashboard, not by you in a loop. When a residuals report
+   *was* run, verify it: confirm its findings were addressed before you
+   approve close. If no pass has been run and the change is risky, you
+   may suggest the user run a residuals pass from the dashboard before
+   approving the close — but do **not** run a residuals auto-loop
+   yourself.
 
 ## Cross-project escalation
 
@@ -185,6 +203,13 @@ timeout. You'll be re-woken by an `@teamlead` message when the user acts:
       resolve the conflicts in its worktree, and commit — then call
       `aido.mergeToMain({ workerHandle })` again.
     - `status: 'noop'` — nothing to merge (already on main); go on.
+    - **the call errors, or returns an unexpected / failed status** — do
+      **NOT** retry it in a loop. Report it via
+      `aido.notifyState({ summary, blockers })` (name the worker and the
+      failure in `blockers`) so the dashboard surfaces a merge-failed
+      escalation to the user, then **end your turn.** The platform raises
+      an actionable escalation on merge failure — the user resolves it
+      and re-wakes you; don't improvise a fix yourself.
   Once **every** worker branch is on main, call
   `aido.endEngagement({ outcome: 'completed', summary })` to close.
 - **Sent back to work** — you'll get a `[end approval denied]` or a
