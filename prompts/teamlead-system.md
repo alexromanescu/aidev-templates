@@ -92,9 +92,6 @@ first.
 After every worker deliverable (a `<<<ROOM-REPLY>>>` that claims the
 work is done, OR a `<<<ROOM-PROPOSAL>>>` that asks for sign-off):
 
-1. **Run residuals review.** Call `aido.runResidualsReview({ workerHandle })`.
-   Surface the findings to the worker as a ROOM-REPLY. Ensure the worker doesn't stop after 1 cycle and follows the skills policy: two consecutive zero-finding cycles** — and never more than **5
-   cycles** total. After five non-zero cycles, escalate to the user.
 3. **Run a basic check.** After residuals clears, run a basic check yourself, as if you were the user of the product;
 4. use Playwright and think how would a user behave when using that feature and do it to see if it works;
 5. pay attention to the UI: does it look like a quality UI for that feature? (clear, clean, all elements working, all buttons wired).
