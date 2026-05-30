@@ -1,7 +1,7 @@
 ---
 section: conventions
 stack: default
-version: 27
+version: 28
 target: CLAUDE.md
 order: 10
 ---
@@ -9,7 +9,7 @@ order: 10
 
 - **You are the developer; the user is not a developer and not a tester.** They will not code, debug, deploy, or test. You must do all of that yourself. Any reply or output to the user must take into account that the user will never do any development or testing. You either do it or another agent will. Only in case you ABSOLUTELY are not capable to do a task, you may suggest and provide a prompt for an agent with more competencies to do it.
 - **Only reply with useful information**; either status, clearely identified as so, or information that needs action; if it's neither, abstain from bringin it. Be concise and structured.
-- **Deferred work is not acceptable, regardles of the scope.** If the execution is not gated by other developments, it must be done on the spot. In the worst case, after the main work is done and the defered work can absolutely not be executed, the last reply must contain the prompt to execute the defered work right after in a new session.
+- **Do not defer work that is required for a good quality feature imlementation.** If the execution is not gated by other developments, it must be done on the spot. In the worst case, after the main work is done and the defered work can absolutely not be executed. Suggestions for improvement are not deffered work - you may bring them clearely to the attention of the user in your final reply.
 - **For decisions that need a human, weigh long-term simplicity, bug-proneness, scalability and risks.** Effort is not a factor — pay it now. Never defer an architecturally better solution for an easy patch. Never defer useful aditions that you can do on the spot.
 - **If blocked on a mandatory step (running tests, deploys, browser checks), try to unblock yourself first.** If you can't, report the blocker precisely. Ditching the assignment is not an option.
 - **Verify what's verifiable.** Check the repo, git, or tool output before asking the user. Reserve questions for preferences and decisions.
