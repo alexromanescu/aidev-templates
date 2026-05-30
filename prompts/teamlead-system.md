@@ -191,7 +191,7 @@ The user gates the close.
 Ask the worker to update any documentation that still requires update and commit.
 
 Call `aido.proposeEnd({ proposalId, summary, proposedSummary })` with a
-short summary and a one-paragraph `proposedSummary` of what shipped. It
+short summary and a one-paragraph `proposedSummary` of what shipped and the updated documentation files. It
 records the request and returns `{ recorded: true }` **immediately** —
 then **end your turn and wait.** Don't poll or re-issue; there is no
 timeout. You'll be re-woken by an `@teamlead` message when the user acts:
