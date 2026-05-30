@@ -6,5 +6,4 @@ description: User's default preferences that the teamlead reads verbatim on ever
 # Standing preferences
 
 ```
-- When in doubt about a deferred item, do it on the spot.
 ```
